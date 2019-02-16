@@ -1,0 +1,283 @@
+﻿<Window x:Class="SystemGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SystemGui"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="606.613" Width="961.833" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="405*"/>
+            <ColumnDefinition Width="321*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="463*"/>
+            <RowDefinition Height="114"/>
+        </Grid.RowDefinitions>
+        <TabControl Name="Tabs" Grid.Row="0" Grid.Column="0" Margin="0,0,0.4,0.2" SelectionChanged="Tabs_SelectionChanged">
+            <TabItem Header="Data">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="321*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="2" Grid.Column="0">
+                        <Button Name="BtnNew"  Height="30" Background="White" Content="New data" Click="BtnNew_OnClick"></Button>
+                        <Button Name="BtnLoadData"  Height="30" Background="White" Content="Load data" Click="BtnLoadData_OnClick"></Button>
+                        <Button Name="BtnSaveData"  Height="30" Background="White" Content="Save data" Click="BtnSaveData_OnClick"></Button>
+                        <Button Name="BtnGenerateData"  Height="30" Background="White" Content="Generate data" Click="BtnGenerateData_OnClick"></Button>
+                    </StackPanel>
+                    <StackPanel Name="PanelNewData" Margin="2" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Block factor: " Grid.Column="0"></Label>
+                            <TextBox Name="TbNewDataBlockFactor" Grid.Column="1" PreviewTextInput="NumberValidationTextBox">2</TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Overflow block factor: " Grid.Column="0"></Label>
+                            <TextBox Name="TbNewDataOfBlockFactor" Grid.Column="1" PreviewTextInput="NumberValidationTextBox">4</TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Random access file block factor: " Grid.Column="0"></Label>
+                            <TextBox Name="TbNewDataBlockInRaf" Grid.Column="1" PreviewTextInput="NumberValidationTextBox">4</TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="0,3,0,0" Name="BtnNewData" Grid.Column="1" Content="Create" Click="BtnNewData_OnClick"></Button>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Name="PanelGenerateData" Margin="2" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Cadastral areas: " Grid.Column="0"></Label>
+                            <TextBox Name="TbGenerateDataCadAreas" Grid.Column="1" PreviewTextInput="NumberValidationTextBox">3</TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Realties: " Grid.Column="0"></Label>
+                            <TextBox Name="TbGenerateDataRealties" Grid.Column="1" PreviewTextInput="NumberValidationTextBox">200</TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="0,3,0,0" Name="BtnGenerate" Grid.Column="1" Content="Generate" Click="BtnGenerate_OnClick"></Button>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Realty">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="321*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="2" Grid.Column="0">
+                        <Button Name="BtnSearchRealtyRegNumber"  Height="30" Background="White" Content="1. Search realty" Click="BtnSearchRealtyRegNumber_OnClick" ></Button>
+                        <Button Name="BtnSearchRealtyId"  Height="30" Background="White" Content="2. Search realty" Click="BtnSearchRealtyId_OnClick" ></Button>
+                        <Button Name="BtnAddRealty"  Height="30" Background="White" Content="3. Add Realty" Click="BtnAddRealty_OnClick"></Button>
+                        <Button Name="BtnRemoveRealty"  Height="30" Background="White" Content="4. Remove realty" Click="BtnRemoveRealty_OnClick"></Button>
+                        <Button Name="BtnUpdateRealty"  Height="30" Background="White" Content="5. Update realty" Click="BtnUpdateRealty_OnClick"></Button>
+                        <Button Name="BtnClear"  Height="30" Background="White" Content="Clear text box" Click="BtnClear_OnClick"></Button>
+                    </StackPanel>
+                    <StackPanel Name="PanelSearchRealtyRegNumber" Margin="2" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Cadastral name: " Grid.Column="0"></Label>
+                            <TextBox Name="TbSearchRealtyRegNumberCadastralName" Grid.Column="1"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Register number: " Grid.Column="0"></Label>
+                            <TextBox Name="TbSearchRealtyRegNumberNumber" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="0,3,0,0" Name="BtnSearchRealtyRegNumberSearch" Grid.Column="1" Content="Search" Click="BtnSearchRealtyRegNumberSearch_OnClick"></Button>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Name="PanelSearchRealtyId" Margin="2" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Id: " Grid.Column="0"></Label>
+                            <TextBox Name="TbSearchRealtyId" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="0,3,0,0" Name="BtnSearchRealtyIdSearch" Grid.Column="1" Content="Search" Click="BtnSearchRealtyIdSearch_OnClick"></Button>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Name="PanelAddRealty" Margin="2" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Register number: " Grid.Column="0"></Label>
+                            <TextBox Name="TbAddRealtyRegisterNumber" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Cadastral area name: " Grid.Column="0"></Label>
+                            <TextBox Name="TbAddRealtyCadAreaName" Grid.Column="1"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Id: " Grid.Column="0"></Label>
+                            <TextBox Name="TbAddRealtyId" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Description: " Grid.Column="0"></Label>
+                            <TextBox Name="TbAddRealtyDescription" Grid.Column="1"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="0,3,0,0" Name="BtnAddRealtyAdd" Grid.Column="1" Content="Add" Click="BtnAddRealtyAdd_OnClick"></Button>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Name="PanelRemoveRealty" Margin="2" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Cadastral area name: " Grid.Column="0"></Label>
+                            <TextBox Name="TbRemoveRealtyCadname" Grid.Column="1"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Register number: " Grid.Column="0"></Label>
+                            <TextBox Name="TbRemoveRealtyRegNumber" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="0,3,0,0" Name="BtnRemoveRealtyRemove" Grid.Column="1" Content="Remove" Click="BtnRemoveRealtyRemove_OnClick"></Button>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Name="PanelUpdateRealty" Margin="2" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Id: " Grid.Column="0"></Label>
+                            <TextBox Name="TbUpdateRealtyId" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="New register number: " Grid.Column="0"></Label>
+                            <TextBox Name="TbUpdateRealtyNewRegisterNumber" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="New cadastral area name: " Grid.Column="0"></Label>
+                            <TextBox Name="TbUpdateRealtyNewCadAreaName" Grid.Column="1"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="New description: " Grid.Column="0"></Label>
+                            <TextBox Name="TbUpdateRealtyNewDescription" Grid.Column="1"></TextBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="0,3,0,0" Name="BtnUpdateRealtyUpdate" Grid.Column="1" Content="Update" Click="BtnUpdateRealtyUpdate_OnClick"></Button>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Test">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="321*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="2" Grid.Column="0">
+                        <Button Name="BtnShowBlocksById"  Height="30" Background="White" Content="Blocks by ID" Click="BtnShowBlocksById_OnClick"></Button>
+                        <Button Name="BtnShowOfBlocksById"  Height="30" Background="White" Content="Overflow blocks by ID" Click="BtnShowOfBlocksById_OnClick"></Button>
+                        <Button Name="BtnShowBlocksByName"  Height="30" Background="White" Content="Blocks by Name and Reg Number" Click="BtnShowBlocksByName_OnClick"></Button>
+                        <Button Name="BtnShowOfBlocksByName"  Height="30" Background="White" Content="Overflow blocks by Name and Reg Number" Click="BtnShowOfBlocksByName_OnClick"></Button>
+                        <Button Name="BtnShowRaf"  Height="30" Background="White" Content="Random access file blocks" Click="BtnShowRaf_OnClick"></Button>
+                       </StackPanel>
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+        <TextBox Name="ResultTextBox" VerticalScrollBarVisibility="Visible" Grid.Row="0" Grid.Column="1" Margin="5,22,5,2" IsReadOnly="True"></TextBox>
+        <ListView Name="MessageLw"  Margin="0" Grid.ColumnSpan="2" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Status" Width="300"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
